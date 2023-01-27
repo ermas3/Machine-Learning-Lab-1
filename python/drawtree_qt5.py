@@ -31,7 +31,7 @@ class MyPainting(QWidget):
     def paintEvent(self, ev):
         p = QtGui.QPainter()
         p.begin(self)
-        p.setPen (QtGui.QPen(QtGui.QColor(0,0,0), 1))
+        p.setPen(QtGui.QPen(QtGui.QColor(0, 0, 0), 1))
         draw(p, self.tree, 10, 10)
         p.end()
 
@@ -54,27 +54,18 @@ def draw(p, t, x, y):
     return newMid, xx+10
 
 
-class MyMainWindow( QMainWindow ):
+class MyMainWindow(QMainWindow):
     def __init__(self, tree):
-        QMainWindow.__init__( self )
+        QMainWindow.__init__(self)
         paint = MyPainting(self, tree)
+        self.setStyleSheet("background-color: white;")
         self.setCentralWidget(paint)
         self.show()
 
 
 def drawTree(tree):
     application = QApplication(sys.argv)
-    win = MyMainWindow(tree)  
+    win = MyMainWindow(tree)
 
     win.show()
     sys.exit(application.exec_())
-
-
-
-
-
-
-
-
-
-
